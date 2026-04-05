@@ -4,8 +4,11 @@ class Router {
         this.routes = {};
         this.currentRoute = '';
         
-        // 监听浏览器前进后退
+        // 监听浏览器前进后退和hash变化
         window.addEventListener('popstate', () => {
+            this.handleRoute();
+        });
+        window.addEventListener('hashchange', () => {
             this.handleRoute();
         });
     }
@@ -15,11 +18,13 @@ class Router {
         this.routes[path] = handler;
     }
 
-    // 导航到指定路径
+    // 导航到指定路径 - 使用hash路由兼容GitHub Pages
     navigate(path) {
         if (path === this.currentRoute) return;
         
-        history.pushState(null, null, path);
+        // 转换为hash路由
+        const hash = path === '/' ? '' : path.substring(1);
+        window.location.hash = hash;
         this.handleRoute();
     }
 
@@ -30,11 +35,15 @@ class Router {
         
         this.currentRoute = path;
         
-        // 解析路由
+        // 解析路由 - 支持GitHub Pages子路径
         let route = '/';
         let params = {};
         
-        if (path === '/' || path === '/index.html') {
+        // 获取基础路径（用于GitHub Pages）
+        const basePath = this.getBasePath();
+        const relativePath = path.replace(basePath, '') || '/';
+        
+        if (relativePath === '/' || relativePath === '/index.html') {
             if (hash === '#articles') {
                 route = '/articles';
             } else if (hash === '#tags') {
@@ -44,12 +53,12 @@ class Router {
             } else {
                 route = '/home';
             }
-        } else if (path.startsWith('/article/')) {
+        } else if (relativePath.startsWith('/article/')) {
             route = '/article';
-            params.id = path.split('/')[2];
-        } else if (path.startsWith('/tag/')) {
+            params.id = relativePath.split('/')[2];
+        } else if (relativePath.startsWith('/tag/')) {
             route = '/tag';
-            params.tag = decodeURIComponent(path.split('/')[2]);
+            params.tag = decodeURIComponent(relativePath.split('/')[2]);
         }
         
         // 执行对应的路由处理器
@@ -64,6 +73,20 @@ class Router {
         
         // 滚动到顶部
         window.scrollTo(0, 0);
+    }
+    
+    // 获取基础路径（用于GitHub Pages等子目录部署）
+    getBasePath() {
+        // 从当前脚本路径推断基础路径
+        const scripts = document.querySelectorAll('script[src]');
+        for (let script of scripts) {
+            const src = script.getAttribute('src');
+            if (src && src.includes('/js/')) {
+                const basePath = src.substring(0, src.indexOf('/js/'));
+                return basePath;
+            }
+        }
+        return '';
     }
 
     // 更新导航激活状态

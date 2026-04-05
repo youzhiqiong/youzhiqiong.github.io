@@ -53,20 +53,22 @@ function registerRoutes() {
 
 // 绑定导航事件
 function bindNavEvents() {
-    // 导航链接点击
+    // 导航链接点击 - 使用hash路由
     document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             const hash = link.getAttribute('href');
-            const path = hash === '#home' ? '/' : '/' + hash.substring(1);
-            router.navigate(path);
+            // 使用hash路由，兼容GitHub Pages
+            window.location.hash = hash.substring(1);
+            router.handleRoute();
         });
     });
     
     // Logo点击返回首页
     document.querySelector('.logo').addEventListener('click', (e) => {
         e.preventDefault();
-        router.navigate('/');
+        window.location.hash = '';
+        router.handleRoute();
     });
     
     // 移动端菜单切换
