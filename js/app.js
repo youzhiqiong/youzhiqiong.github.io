@@ -98,10 +98,10 @@ function renderHome() {
                 <h1>🧠 探索内心的旅程</h1>
                 <p>在这里，我们用心理学的视角理解自己，用科学的方法改善生活。<br>每一篇文章都是一次心灵的对话，愿你在这里找到属于自己的答案。</p>
                 <div class="hero-actions">
-                    <a href="#articles" class="hero-btn hero-btn-primary" onclick="event.preventDefault(); router.navigate('/articles');">
+                    <a href="#articles" class="hero-btn hero-btn-primary" onclick="event.preventDefault(); router.navigate('#articles');">
                         📖 开始阅读
                     </a>
-                    <a href="#about" class="hero-btn hero-btn-secondary" onclick="event.preventDefault(); router.navigate('/about');">
+                    <a href="#about" class="hero-btn hero-btn-secondary" onclick="event.preventDefault(); router.navigate('#about');">
                         👋 了解作者
                     </a>
                 </div>
@@ -135,7 +135,7 @@ function renderHome() {
             <section class="articles-section">
                 <div class="section-header">
                     <h2 class="section-title">最新文章</h2>
-                    <a href="#articles" class="view-all" onclick="event.preventDefault(); router.navigate('/articles');">
+                    <a href="#articles" class="view-all" onclick="event.preventDefault(); router.navigate('#articles');">
                         查看全部 →
                     </a>
                 </div>
@@ -147,13 +147,13 @@ function renderHome() {
             <section class="topics-preview">
                 <div class="section-header">
                     <h2 class="section-title">热门主题</h2>
-                    <a href="#tags" class="view-all" onclick="event.preventDefault(); router.navigate('/tags');">
+                    <a href="#tags" class="view-all" onclick="event.preventDefault(); router.navigate('#tags');">
                         全部标签 →
                     </a>
                 </div>
                 <div class="hot-tags">
                     ${getAllTags().slice(0, 10).map(([tag, count]) => `
-                        <a href="#tags" class="hot-tag" onclick="event.preventDefault(); router.navigate('/tag/${encodeURIComponent(tag)}');">
+                        <a href="#/tag/${encodeURIComponent(tag)}" class="hot-tag" onclick="event.preventDefault(); router.navigate('#/tag/${encodeURIComponent(tag)}');">
                             ${tag} <span>(${count})</span>
                         </a>
                     `).join('')}
@@ -229,7 +229,7 @@ function renderArticleDetail(params) {
                 <div class="empty-state">
                     <div class="empty-state-icon">😕</div>
                     <p>文章不存在</p>
-                    <a href="#articles" class="view-all" onclick="event.preventDefault(); router.navigate('/articles');" style="margin-top: 16px; display: inline-block;">
+                    <a href="#articles" class="view-all" onclick="event.preventDefault(); router.navigate('#articles');" style="margin-top: 16px; display: inline-block;">
                         ← 返回文章列表
                     </a>
                 </div>
@@ -246,7 +246,7 @@ function renderArticleDetail(params) {
     
     app.innerHTML = `
         <div class="container fade-in">
-            <a href="#articles" class="back-btn" onclick="event.preventDefault(); router.navigate('/articles');">
+            <a href="#articles" class="back-btn" onclick="event.preventDefault(); router.navigate('#articles');">
                 ← 返回文章列表
             </a>
             
@@ -397,7 +397,7 @@ function renderTags() {
             
             <div class="tags-cloud">
                 ${tags.map(([tag, count]) => `
-                    <a href="/tag/${encodeURIComponent(tag)}" class="tag-item" onclick="event.preventDefault(); router.navigate('/tag/${encodeURIComponent(tag)}');">
+                    <a href="#/tag/${encodeURIComponent(tag)}" class="tag-item" onclick="event.preventDefault(); router.navigate('#/tag/${encodeURIComponent(tag)}');">
                         ${tag}
                         <span class="tag-count">${count}</span>
                     </a>
@@ -415,7 +415,7 @@ function renderTagArticles(params) {
     
     app.innerHTML = `
         <div class="container fade-in">
-            <a href="#tags" class="back-btn" onclick="event.preventDefault(); router.navigate('/tags');">
+            <a href="#tags" class="back-btn" onclick="event.preventDefault(); router.navigate('#tags');">
                 ← 返回标签页
             </a>
             
@@ -523,7 +523,7 @@ function renderAbout() {
                         <a href="mailto:28324386@qq.com" class="contact-btn">
                             📧 发送邮件
                         </a>
-                        <a href="${window.location.origin}${window.location.pathname}#/articles" class="contact-btn contact-btn-secondary" onclick="event.preventDefault(); router.navigate('/articles');">
+                        <a href="#articles" class="contact-btn contact-btn-secondary" onclick="event.preventDefault(); router.navigate('#articles');">
                             📖 阅读文章
                         </a>
                     </div>
@@ -557,7 +557,7 @@ function bindArticleCardEvents() {
     document.querySelectorAll('.article-card').forEach(card => {
         card.addEventListener('click', () => {
             const id = card.getAttribute('data-id');
-            router.navigate(`/article/${id}`);
+            router.navigate(`#/article/${id}`);
         });
     });
 }

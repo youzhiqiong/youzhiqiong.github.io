@@ -4,10 +4,7 @@ class Router {
         this.routes = {};
         this.currentRoute = '';
         
-        // 监听浏览器前进后退和hash变化
-        window.addEventListener('popstate', () => {
-            this.handleRoute();
-        });
+        // 监听hash变化
         window.addEventListener('hashchange', () => {
             this.handleRoute();
         });
@@ -18,47 +15,39 @@ class Router {
         this.routes[path] = handler;
     }
 
-    // 导航到指定路径 - 使用hash路由兼容GitHub Pages
+    // 导航到指定路径
     navigate(path) {
         if (path === this.currentRoute) return;
         
-        // 转换为hash路由
-        const hash = path === '/' ? '' : path.substring(1);
+        // 转换为hash
+        const hash = path === '/' ? '' : path;
         window.location.hash = hash;
-        this.handleRoute();
     }
 
     // 处理当前路由
     handleRoute() {
-        const path = window.location.pathname;
-        const hash = window.location.hash;
+        const hash = window.location.hash || '#home';
         
-        this.currentRoute = path;
+        this.currentRoute = hash;
         
-        // 解析路由 - 支持GitHub Pages子路径
-        let route = '/';
+        // 解析路由
+        let route = '/home';
         let params = {};
         
-        // 获取基础路径（用于GitHub Pages）
-        const basePath = this.getBasePath();
-        const relativePath = path.replace(basePath, '') || '/';
-        
-        if (relativePath === '/' || relativePath === '/index.html') {
-            if (hash === '#articles') {
-                route = '/articles';
-            } else if (hash === '#tags') {
-                route = '/tags';
-            } else if (hash === '#about') {
-                route = '/about';
-            } else {
-                route = '/home';
-            }
-        } else if (relativePath.startsWith('/article/')) {
+        if (hash === '#home' || hash === '' || hash === '#') {
+            route = '/home';
+        } else if (hash === '#articles') {
+            route = '/articles';
+        } else if (hash === '#tags') {
+            route = '/tags';
+        } else if (hash === '#about') {
+            route = '/about';
+        } else if (hash.startsWith('#/article/')) {
             route = '/article';
-            params.id = relativePath.split('/')[2];
-        } else if (relativePath.startsWith('/tag/')) {
+            params.id = hash.split('/')[2];
+        } else if (hash.startsWith('#/tag/')) {
             route = '/tag';
-            params.tag = decodeURIComponent(relativePath.split('/')[2]);
+            params.tag = decodeURIComponent(hash.split('/')[2]);
         }
         
         // 执行对应的路由处理器
@@ -69,31 +58,18 @@ class Router {
         }
         
         // 更新导航状态
-        this.updateNavState(hash || '#home');
+        this.updateNavState(hash);
         
         // 滚动到顶部
         window.scrollTo(0, 0);
-    }
-    
-    // 获取基础路径（用于GitHub Pages等子目录部署）
-    getBasePath() {
-        // 从当前脚本路径推断基础路径
-        const scripts = document.querySelectorAll('script[src]');
-        for (let script of scripts) {
-            const src = script.getAttribute('src');
-            if (src && src.includes('/js/')) {
-                const basePath = src.substring(0, src.indexOf('/js/'));
-                return basePath;
-            }
-        }
-        return '';
     }
 
     // 更新导航激活状态
     updateNavState(hash) {
         document.querySelectorAll('.nav-link').forEach(link => {
             link.classList.remove('active');
-            if (link.getAttribute('href') === hash) {
+            const href = link.getAttribute('href');
+            if (href === hash || (hash === '#home' && href === '#home')) {
                 link.classList.add('active');
             }
         });
