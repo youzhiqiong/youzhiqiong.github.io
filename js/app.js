@@ -94,7 +94,40 @@ function renderHome() {
         <div class="container fade-in">
             <section class="hero">
                 <h1>🧠 探索内心的旅程</h1>
-                <p>在这里，我们用心理学的视角理解自己，用科学的方法改善生活。每一篇文章都是一次心灵的对话。</p>
+                <p>在这里，我们用心理学的视角理解自己，用科学的方法改善生活。<br>每一篇文章都是一次心灵的对话，愿你在这里找到属于自己的答案。</p>
+                <div class="hero-actions">
+                    <a href="#articles" class="hero-btn hero-btn-primary" onclick="event.preventDefault(); router.navigate('/articles');">
+                        📖 开始阅读
+                    </a>
+                    <a href="#about" class="hero-btn hero-btn-secondary" onclick="event.preventDefault(); router.navigate('/about');">
+                        👋 了解作者
+                    </a>
+                </div>
+            </section>
+
+            <section class="features-section">
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <span class="feature-icon">🧠</span>
+                        <h3>科学严谨</h3>
+                        <p>每篇文章基于心理学研究，理论与实践并重</p>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">💡</span>
+                        <h3>实用易懂</h3>
+                        <p>将专业知识转化为可操作的日常建议</p>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">🌱</span>
+                        <h3>持续成长</h3>
+                        <p>定期更新，陪伴你的每一步心理成长</p>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon">❤️</span>
+                        <h3>温暖陪伴</h3>
+                        <p>不评判、不说教，只是陪你一起看见内心</p>
+                    </div>
+                </div>
             </section>
             
             <section class="articles-section">
@@ -106,6 +139,22 @@ function renderHome() {
                 </div>
                 <div class="articles-grid">
                     ${recentArticles.map(article => createArticleCard(article)).join('')}
+                </div>
+            </section>
+
+            <section class="topics-preview">
+                <div class="section-header">
+                    <h2 class="section-title">热门主题</h2>
+                    <a href="#tags" class="view-all" onclick="event.preventDefault(); router.navigate('/tags');">
+                        全部标签 →
+                    </a>
+                </div>
+                <div class="hot-tags">
+                    ${getAllTags().slice(0, 10).map(([tag, count]) => `
+                        <a href="#tags" class="hot-tag" onclick="event.preventDefault(); router.navigate('/tag/${encodeURIComponent(tag)}');">
+                            ${tag} <span>(${count})</span>
+                        </a>
+                    `).join('')}
                 </div>
             </section>
         </div>
@@ -393,6 +442,7 @@ function renderTagArticles(params) {
 function renderAbout() {
     const app = document.getElementById('app');
     const about = blogData.about;
+    const bioParagraphs = about.bio.split('\n\n').filter(p => p.trim());
     
     app.innerHTML = `
         <div class="container fade-in">
@@ -401,21 +451,79 @@ function renderAbout() {
                     <div class="about-avatar">${about.avatar}</div>
                     <h1 class="about-name">${about.name}</h1>
                     <p class="about-title">${about.title}</p>
-                    <p class="about-bio">${about.bio}</p>
+                    <div class="about-bio">
+                        ${bioParagraphs.map(p => `<p>${p}</p>`).join('')}
+                    </div>
                     
                     <div class="about-stats">
                         <div class="stat-item">
                             <div class="stat-value">${about.stats.articles}</div>
-                            <div class="stat-label">文章</div>
+                            <div class="stat-label">篇文章</div>
                         </div>
                         <div class="stat-item">
                             <div class="stat-value">${about.stats.tags}</div>
-                            <div class="stat-label">标签</div>
+                            <div class="stat-label">个标签</div>
                         </div>
                         <div class="stat-item">
                             <div class="stat-value">${about.stats.readers}</div>
-                            <div class="stat-label">读者</div>
+                            <div class="stat-label">位读者</div>
                         </div>
+                    </div>
+                </div>
+
+                <div class="about-topics">
+                    <h2 class="section-title" style="text-align:center; margin-bottom: 1.5rem;">📚 主要研究方向</h2>
+                    <div class="topics-grid">
+                        <div class="topic-card">
+                            <div class="topic-icon">🧠</div>
+                            <h3>认知心理学</h3>
+                            <p>探索大脑的思维方式，认识认知偏差，提升理性决策能力。</p>
+                        </div>
+                        <div class="topic-card">
+                            <div class="topic-icon">💞</div>
+                            <h3>情绪与关系</h3>
+                            <p>理解情绪调节机制，改善人际沟通，建立更健康的亲密关系。</p>
+                        </div>
+                        <div class="topic-card">
+                            <div class="topic-icon">🌱</div>
+                            <h3>积极心理学</h3>
+                            <p>发掘内在优势，培养幸福感，活出更有意义的人生。</p>
+                        </div>
+                        <div class="topic-card">
+                            <div class="topic-icon">🕊️</div>
+                            <h3>创伤与疗愈</h3>
+                            <p>了解心理创伤的形成与疗愈，陪伴每一颗受伤的心走向复原。</p>
+                        </div>
+                        <div class="topic-card">
+                            <div class="topic-icon">🧘</div>
+                            <h3>正念冥想</h3>
+                            <p>将正念融入日常生活，找回当下的平静与清醒。</p>
+                        </div>
+                        <div class="topic-card">
+                            <div class="topic-icon">🌙</div>
+                            <h3>睡眠科学</h3>
+                            <p>解读睡眠的奥秘，帮助每个人拥有更高质量的休息与恢复。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-quote">
+                    <blockquote>
+                        "认识你自己。" —— 德尔菲神庙铭文<br>
+                        <span style="font-size: 0.9em; opacity: 0.8;">了解自己，是一切成长的起点。</span>
+                    </blockquote>
+                </div>
+
+                <div class="about-contact">
+                    <h2 class="section-title" style="text-align:center; margin-bottom: 1rem;">📬 与我联系</h2>
+                    <p style="text-align:center; color: var(--text-secondary); margin-bottom: 1.5rem;">如果你有任何想法、问题或合作意向，欢迎通过以下方式联系我。</p>
+                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                        <a href="mailto:28324386@qq.com" class="contact-btn">
+                            📧 发送邮件
+                        </a>
+                        <a href="${window.location.origin}${window.location.pathname}#/articles" class="contact-btn contact-btn-secondary" onclick="event.preventDefault(); router.navigate('/articles');">
+                            📖 阅读文章
+                        </a>
                     </div>
                 </div>
             </section>

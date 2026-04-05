@@ -154,8 +154,8 @@ main {
 /* 首页英雄区 */
 .hero {
     text-align: center;
-    padding: 80px 20px;
-    background: linear-gradient(135deg, var(--primary-light) 0%, var(--accent-color) 100%);
+    padding: 80px 20px 64px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-light) 60%, var(--accent-color) 100%);
     border-radius: var(--radius);
     margin-bottom: 48px;
     color: white;
@@ -171,8 +171,132 @@ main {
     font-size: 1.125rem;
     opacity: 0.95;
     max-width: 600px;
-    margin: 0 auto;
+    margin: 0 auto 2rem;
+    line-height: 1.8;
 }
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.hero-btn {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: var(--transition);
+    font-size: 1rem;
+}
+
+.hero-btn-primary {
+    background: #fff;
+    color: var(--primary-color);
+}
+
+.hero-btn-primary:hover {
+    background: rgba(255,255,255,0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+}
+
+.hero-btn-secondary {
+    background: transparent;
+    color: #fff;
+    border: 2px solid rgba(255,255,255,0.8);
+}
+
+.hero-btn-secondary:hover {
+    background: rgba(255,255,255,0.15);
+    transform: translateY(-2px);
+}
+
+/* 首页特色模块 */
+.features-section {
+    margin-bottom: 48px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.25rem;
+}
+
+.feature-item {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+    text-align: center;
+    border: 1px solid var(--border-color);
+    transition: var(--transition);
+}
+
+.feature-item:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary-light);
+}
+
+.feature-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+.feature-item h3 {
+    font-size: 1rem;
+    color: var(--text-primary);
+    margin-bottom: 0.4rem;
+}
+
+.feature-item p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* 首页热门主题 */
+.topics-preview {
+    margin-bottom: 48px;
+}
+
+.hot-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+}
+
+.hot-tag {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+}
+
+.hot-tag:hover {
+    background: var(--primary-color);
+    color: #fff;
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.hot-tag span {
+    opacity: 0.7;
+    font-size: 0.8rem;
+}
+
+
 
 /* 文章卡片 */
 .articles-section {
@@ -442,9 +566,10 @@ main {
     color: white;
 }
 
+
 /* 关于页 */
 .about-section {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
 }
 
@@ -454,6 +579,7 @@ main {
     box-shadow: var(--shadow);
     padding: 48px;
     text-align: center;
+    margin-bottom: 2.5rem;
 }
 
 .about-avatar {
@@ -484,6 +610,15 @@ main {
     color: var(--text-secondary);
     line-height: 1.8;
     margin-bottom: 32px;
+    text-align: left;
+}
+
+.about-bio p {
+    margin-bottom: 1rem;
+}
+
+.about-bio p:last-child {
+    margin-bottom: 0;
 }
 
 .about-stats {
@@ -508,6 +643,107 @@ main {
     font-size: 0.875rem;
     color: var(--text-muted);
 }
+
+/* 关于页 - 研究方向 */
+.about-topics {
+    margin-bottom: 2.5rem;
+}
+
+.topics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.25rem;
+    margin-top: 0.5rem;
+}
+
+.topic-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 1.5rem;
+    text-align: center;
+    transition: var(--transition);
+    border: 1px solid var(--border-color);
+}
+
+.topic-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+    border-color: var(--primary-light);
+}
+
+.topic-icon {
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+.topic-card h3 {
+    font-size: 1rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.topic-card p {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+/* 关于页 - 名言 */
+.about-quote {
+    margin-bottom: 2.5rem;
+}
+
+.about-quote blockquote {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+    color: #fff;
+    border-radius: var(--radius);
+    padding: 2rem 2.5rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    text-align: center;
+    border-left: none;
+    box-shadow: var(--shadow);
+}
+
+/* 关于页 - 联系方式 */
+.about-contact {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.contact-btn {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    border-radius: 50px;
+    background: var(--primary-color);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+}
+
+.contact-btn:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(107, 91, 149, 0.4);
+}
+
+.contact-btn-secondary {
+    background: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.contact-btn-secondary:hover {
+    background: var(--primary-color);
+    color: #fff;
+}
+
+
 
 /* 页脚 */
 .footer {
