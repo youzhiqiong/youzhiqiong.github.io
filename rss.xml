@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>心灵驿站 | 心理学个人博客</title>
+        <link>https://youzhiqiong.github.io</link>
+        <description>探索内心的旅程，用心理学的视角理解自己，用科学的方法改善生活。</description>
+        <language>zh-CN</language>
+        <lastBuildDate>Sat, 04 Apr 2026 00:00:00 +0800</lastBuildDate>
+        <atom:link href="https://youzhiqiong.github.io/rss.xml" rel="self" type="application/rss+xml"/>
+        
+        <item>
+            <title>焦虑与压力管理：找回内心的平衡</title>
+            <link>https://youzhiqiong.github.io/#/article/7</link>
+            <guid isPermaLink="true">https://youzhiqiong.github.io/#/article/7</guid>
+            <pubDate>Thu, 02 Apr 2026 00:00:00 +0800</pubDate>
+            <description><![CDATA[在快节奏的现代生活中，焦虑和压力已成为常态。学会科学管理压力，是维护心理健康的关键技能。本文将探讨焦虑与压力的机制，以及实用的管理策略。]]></description>
+            <category>焦虑</category>
+            <category>压力管理</category>
+            <category>心理健康</category>
+        </item>
+        
+        <item>
+            <title>睡眠与心理健康：优质睡眠的科学</title>
+            <link>https://youzhiqiong.github.io/#/article/8</link>
+            <guid isPermaLink="true">https://youzhiqiong.github.io/#/article/8</guid>
+            <pubDate>Mon, 30 Mar 2026 00:00:00 +0800</pubDate>
+            <description><![CDATA[睡眠不仅是休息，更是大脑进行修复和记忆巩固的关键时刻。了解睡眠科学，改善你的睡眠质量。]]></description>
+            <category>睡眠</category>
+            <category>心理健康</category>
+            <category>生活习惯</category>
+        </item>
+        
+        <item>
+            <title>人际关系沟通技巧：建立深度连接</title>
+            <link>https://youzhiqiong.github.io/#/article/9</link>
+            <guid isPermaLink="true">https://youzhiqiong.github.io/#/article/9</guid>
+            <pubDate>Sat, 28 Mar 2026 00:00:00 +0800</pubDate>
+            <description><![CDATA[良好的人际关系是幸福生活的关键。学习有效沟通技巧，帮助你建立更真诚、更深入的人际连接。]]></description>
+            <category>人际关系</category>
+            <category>沟通技巧</category>
+            <category>社交</category>
+        </item>
+        
+        <item>
+            <title>积极心理学：发现生活的美好</title>
+            <link>https://youzhiqiong.github.io/#/article/10</link>
+            <guid isPermaLink="true">https://youzhiqiong.github.io/#/article/10</guid>
+            <pubDate>Wed, 25 Mar 2026 00:00:00 +0800</pubDate>
+            <description><![CDATA[积极心理学关注人类的优势和美德，研究如何过上更有意义、更幸福的生活。]]></description>
+            <category>积极心理学</category>
+            <category>幸福感</category>
+            <category>个人成长</category>
+        </item>
+        
+        <item>
+            <title>创伤与复原：心理创伤的疗愈之路</title>
+            <link>https://youzhiqiong.github.io/#/article/11</link>
+            <guid isPermaLink="true">https://youzhiqiong.github.io/#/article/11</guid>
+            <pubDate>Sun, 22 Mar 2026 00:00:00 +0800</pubDate>
+            <description><![CDATA[心理创伤可能源于各种经历，但创伤不等于终身伤害。了解创伤机制，找到属于自己的疗愈之路。]]></description>
+            <category>创伤</category>
+            <category>心理疗愈</category>
+            <category>PTSD</category>
+            <category>复原力</category>
+        </item>
+        
+        <item>
+            <title>认识情绪：情绪调节的心理学基础</title>
+            <link>https://youzhiqiong.github.io/#/article/1</link>
+            <guid isPermaLink="true">https://youzhiqiong.github.io/#/article/1</guid>
+            <pubDate>Sat, 28 Mar 2026 00:00:00 +0800</pubDate>
+            <description><![CDATA[情绪是人类心理活动的核心组成部分。了解情绪的本质，学会调节情绪，是心理健康的重要基础。]]></description>
+            <category>情绪管理</category>
+            <category>心理健康</category>
+            <category>正念</category>
+        </item>
+        
+        <item>
+            <title>拖延症背后的心理机制</title>
+            <link>https://youzhiqiong.github.io/#/article/2</link>
+            <guid isPermaLink="true">https://youzhiqiong.github.io/#/article/2</guid>
+            <pubDate>Wed, 25 Mar 2026 00:00:00 +0800</pubDate>
+            <description><![CDATA[拖延不是懒惰，而是一种复杂的心理现象。了解拖延的根源，才能找到有效的应对策略。]]></description>
+            <category>拖延症</category>
+            <category>自我提升</category>
+            <category>时间管理</category>
+        </item>
+        
+        <item>
+            <title>依恋理论：理解亲密关系的心理学</title>
+            <link>https://youzhiqiong.github.io/#/article/3</link>
+            <guid isPermaLink="true">https://youzhiqiong.github.io/#/article/3</guid>
+            <pubDate>Fri, 20 Mar 2026 00:00:00 +0800</pubDate>
+            <description><![CDATA[我们的依恋风格如何影响成年后的亲密关系？了解依恋理论，帮助你建立更健康的情感连接。]]></description>
+            <category>依恋理论</category>
+            <category>亲密关系</category>
+            <category>心理学</category>
+        </item>
+        
+        <item>
+            <title>正念冥想入门：找回内心的平静</title>
+            <link>https://youzhiqiong.github.io/#/article/4</link>
+            <guid isPermaLink="true">https://youzhiqiong.github.io/#/article/4</guid>
+            <pubDate>Sun, 15 Mar 2026 00:00:00 +0800</pubDate>
+            <description><![CDATA[正念冥想是一种简单却强大的心理训练方法。每天只需10分钟，就能显著改善你的心理健康。]]></description>
+            <category>正念</category>
+            <category>冥想</category>
+            <category>心理健康</category>
+        </item>
+        
+        <item>
+            <title>认知偏差：我们大脑中的思维陷阱</title>
+            <link>https://youzhiqiong.github.io/#/article/5</link>
+            <guid isPermaLink="true">https://youzhiqiong.github.io/#/article/5</guid>
+            <pubDate>Tue, 10 Mar 2026 00:00:00 +0800</pubDate>
+            <description><![CDATA[人类大脑并非完美的思考机器。了解常见的认知偏差，帮助你做出更理性的决策。]]></description>
+            <category>认知心理学</category>
+            <category>决策</category>
+            <category>思维</category>
+        </item>
+        
+        <item>
+            <title>自我关怀：学会善待自己</title>
+            <link>https://youzhiqiong.github.io/#/article/6</link>
+            <guid isPermaLink="true">https://youzhiqiong.github.io/#/article/6</guid>
+            <pubDate>Thu, 05 Mar 2026 00:00:00 +0800</pubDate>
+            <description><![CDATA[我们常常对他人充满同情，却对自己过于苛刻。自我关怀是心理健康的重要组成部分。]]></description>
+            <category>自我关怀</category>
+            <category>心理健康</category>
+            <category>自我成长</category>
+        </item>
+    </channel>
+</rss>
