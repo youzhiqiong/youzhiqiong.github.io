@@ -58,17 +58,15 @@ function bindNavEvents() {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             const hash = link.getAttribute('href');
-            // 使用hash路由，兼容GitHub Pages
-            window.location.hash = hash.substring(1);
-            router.handleRoute();
+            // 使用hash路由，直接设置hash值（href已经是#开头的格式）
+            window.location.hash = hash;
         });
     });
     
     // Logo点击返回首页
     document.querySelector('.logo').addEventListener('click', (e) => {
         e.preventDefault();
-        window.location.hash = '';
-        router.handleRoute();
+        window.location.hash = '#home';
     });
     
     // 移动端菜单切换
