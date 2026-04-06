@@ -16,12 +16,17 @@ class Router {
     }
 
     // 导航到指定路径
+    // path 可以是 '#articles'、'#/article/1' 这样带 # 的格式
+    // 也可以是 '/articles'、'/article/1' 这样不带 # 的格式
     navigate(path) {
-        if (path === this.currentRoute) return;
+        // 统一为带 # 的格式用于比较
+        const hashPath = path.startsWith('#') ? path : '#' + path;
         
-        // 转换为hash
-        const hash = path === '/' ? '' : path;
-        window.location.hash = hash;
+        if (hashPath === this.currentRoute) return;
+        
+        // window.location.hash 赋值时需要带 # 或不带均可（浏览器会自动规范化）
+        // 这里统一传入不带 # 的部分，让浏览器加 #
+        window.location.hash = path.startsWith('#') ? path.slice(1) : path;
     }
 
     // 处理当前路由
