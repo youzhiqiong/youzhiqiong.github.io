@@ -254,8 +254,9 @@ function renderArticleDetail(params) {
         return;
     }
     
-    // 渲染Markdown内容
-    const htmlContent = marked.parse(article.content);
+    // 渲染Markdown内容（兼容 marked v4/v5）
+    const rawParsed = marked.parse(article.content);
+    const htmlContent = (rawParsed instanceof Promise) ? article.content : rawParsed;
     
     // 生成目录
     const toc = generateTOC(article.content);

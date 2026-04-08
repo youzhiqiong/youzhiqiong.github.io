@@ -44,10 +44,35 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <!-- 本地数据和路由无需外部依赖，优先加载 -->
     <script src="js/data.js"></script>
     <script src="js/router.js"></script>
+    <!-- Markdown 解析库（带降级处理） -->
+    <script src="https://cdn.jsdelivr.net/npm/marked@4.3.0/marked.min.js"></script>
+    <script>
+        // 若 marked CDN 加载失败，提供简单降级方案
+        if (typeof marked === 'undefined') {
+            window.marked = { parse: function(text) {
+                return text
+                    .replace(/^# (.+)$/gm, '<h1>$1</h1>')
+                    .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+                    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+                    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+                    .replace(/`(.+?)`/g, '<code>$1</code>')
+                    .replace(/\n\n/g, '</p><p>')
+                    .replace(/^/, '<p>').replace(/$/, '</p>');
+            }};
+        }
+    </script>
+    <!-- 代码高亮（可选） -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        // 若 hljs 未加载，提供空实现避免报错
+        if (typeof hljs === 'undefined') {
+            window.hljs = { highlightBlock: function() {}, highlightElement: function() {} };
+        }
+    </script>
     <script src="js/app.js"></script>
 </body>
 </html>
