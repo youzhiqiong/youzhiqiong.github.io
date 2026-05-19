@@ -87,9 +87,10 @@ function bindNavEvents() {
 function renderHome() {
     const app = document.getElementById('app');
     try {
-        const recentThree = blogData.articles.slice(0, 3);
+        const sortedArticles = [...blogData.articles].sort((a, b) => new Date(b.date) - new Date(a.date));
+        const recentThree = sortedArticles.slice(0, 3);
         const hotTags = getAllTags().slice(0, 12);
-        const allArticles = blogData.articles;
+        const allArticles = sortedArticles;
 
         app.innerHTML = `
         <!-- 全屏 Hero Banner -->
@@ -214,7 +215,7 @@ function renderArticles() {
             </div>
 
             <div class="articles-grid" id="articlesGrid">
-                ${blogData.articles.map(a => createArticleCard(a)).join('')}
+                ${[...blogData.articles].sort((a, b) => new Date(b.date) - new Date(a.date)).map(a => createArticleCard(a)).join('')}
             </div>
 
             <div class="empty-state" id="emptyState" style="display: none;">
@@ -229,7 +230,7 @@ function renderArticles() {
 
     searchInput.addEventListener('input', (e) => {
         const keyword = e.target.value.trim();
-        let articles = blogData.articles;
+        let articles = [...blogData.articles].sort((a, b) => new Date(b.date) - new Date(a.date));
         if (keyword) articles = searchArticles(keyword);
 
         if (articles.length === 0) {
@@ -363,7 +364,7 @@ function renderTags() {
 function renderTagArticles(params) {
     const app = document.getElementById('app');
     const tag = params.tag;
-    const articles = getArticlesByTag(tag);
+    const articles = getArticlesByTag(tag).sort((a, b) => new Date(b.date) - new Date(a.date));
 
     app.innerHTML = `
         <div class="container fade-in">
